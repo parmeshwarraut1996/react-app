@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
-import { Card, TextField, createMuiTheme, MuiThemeProvider, Snackbar, Link } from "@material-ui/core";
+import { Card, TextField, createMuiTheme, MuiThemeProvider, Snackbar } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import { signUp } from '../services/userServices';
 const theme = createMuiTheme({
     overrides: {

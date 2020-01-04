@@ -32,10 +32,10 @@ class Login extends Component {
         }
     }
     handleValidation() {
-       
-        
+
+
         let fields = this.state.fields;
-        console.log("handle validation",fields);
+        console.log("handle validation", fields);
         let errors = {};
         let formIsValid = true;
 
@@ -74,12 +74,12 @@ class Login extends Component {
 
     }
     handleLogin = async () => {
-        console.log("in sign in",this.state.fields);
+        console.log("in sign in", this.state.fields);
 
         if (this.handleValidation()) {
             await login(this.state.fields).then((res) => {
-                console.log("res",res);
-                
+                console.log("res", res);
+
                 this.setState({
                     snackBarOpen: true,
                     snackBarMessage: res.data.message
@@ -99,6 +99,9 @@ class Login extends Component {
         this.setState({
             show: !this.state.show
         })
+    }
+    goToSignIn() {
+        this.props.history.push('/signUp')
     }
     render() {
         return (
@@ -152,8 +155,7 @@ class Login extends Component {
                             <span>Dont have an account with us? </span>
                             <button
                                 id="btnSign"
-                                onClick={() => this.props.history.push('/signUp')}>
-
+                                onClick={()=>this.goToSignIn()}>
                                 Signup
                         </button>
                         </div>
