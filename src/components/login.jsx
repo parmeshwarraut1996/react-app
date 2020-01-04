@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, TextField, createMuiTheme, MuiThemeProvider, Snackbar, InputAdornment,IconButton } from "@material-ui/core";
+import { Card, TextField, createMuiTheme, MuiThemeProvider, Snackbar, InputAdornment } from "@material-ui/core";
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 const theme = createMuiTheme({
@@ -25,7 +25,7 @@ class Login extends Component {
             errors: {},
             snackBarOpen: false,
             snackBarMessage: '',
-            show:false
+            show: false
 
 
         }
@@ -85,9 +85,9 @@ class Login extends Component {
 
         }
     }
-    handleClickShowPassword(){
+    handleClickShowPassword() {
         this.setState({
-            show:!this.state.show
+            show: !this.state.show
         })
     }
     render() {
@@ -124,11 +124,11 @@ class Login extends Component {
                                         endAdornment: (
                                             <InputAdornment position="end">
                                                 <div onClick={() => this.setState({ show: !this.state.show })}>
-                                                    {this.state.show ?  <VisibilityOff /> :<Visibility />}
+                                                    {this.state.show ? <VisibilityOff /> : <Visibility />}
                                                 </div>
                                             </InputAdornment>
                                         ),
-                                        }}
+                                    }}
                                 />
                             </div>
 
