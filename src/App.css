@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+  height: 100vh;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+.innerCardDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: center;
+  height: 60%;
+  width: 80%;
+}
+.signUpContainer{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  height: 100vh;
+}
+#signUpCard{
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  height: 450px;
+  padding: 50px;
+  align-items: center;
+  justify-content: space-between;
+}
+.name{
+  width: 48%;
+  height: 60px;
+ 
+}
+.nameDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.textfield{
+  width: 100%;
+  height: 60px;
+}
+#btnSignUp{
+  height: 50px;
+  width: 50%;
+  border-radius: 7px;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-family: serif;
+  margin-top: 10px;
+}
+.inputDiv{
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-evenly;
+}
+#btnLogin{
+  height: 50px;
+  width: 100%;
+  border-radius: 3px;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-family: serif;
+}
+#btnSign{
+  height: 50px;
+  width: 100%;
+  border-radius: 3px;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-family: serif;
+  margin-top: 10px;
+}
+#btnSignUp:active {
+  outline: none;
+  border: none;
+  }
+.signUpDiv{
+  width: 80%;
+  margin-bottom: 55px;
+  }
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
