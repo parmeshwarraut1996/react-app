@@ -1,4 +1,4 @@
 module.exports={
-    signUp:"",
-    login:""
+    signUp:"signUp",
+    login:"login"
 }
