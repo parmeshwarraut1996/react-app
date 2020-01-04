@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Router>
         <Route path='/' component={Login}/>
-        <Route path='/' component={SignUp}/>
+        <Route path='/signup' component={SignUp}/>
       </Router>
       
     </div>
