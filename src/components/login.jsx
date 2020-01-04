@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, TextField, createMuiTheme, MuiThemeProvider, Snackbar, InputAdornment } from "@material-ui/core";
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { login } from '../services/userServices';
 const theme = createMuiTheme({
     overrides: {
         MuiPaper: {
@@ -16,10 +17,10 @@ const theme = createMuiTheme({
 })
 
 class Login extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            emailId: "",
+            email: "",
             password: "",
             fields: {},
             errors: {},
@@ -31,22 +32,25 @@ class Login extends Component {
         }
     }
     handleValidation() {
+       
+        
         let fields = this.state.fields;
+        console.log("handle validation",fields);
         let errors = {};
         let formIsValid = true;
 
 
         //Email validation              
-        if (!fields["emailId"]) {
+        if (!fields["email"]) {
             formIsValid = false;
-            errors["emailId"] = "* required  valid mail id";
+            errors["email"] = "* required  valid mail id";
         }
         // Check if email_id contain @ symbol and .
-        if (typeof fields["emailId"] !== "undefined") {
-            let lastAtPos = fields["emailId"].lastIndexOf('@');
-            let lastDotPos = fields["emailId"].lastIndexOf('.');
+        if (typeof fields["email"] !== "undefined") {
+            let lastAtPos = fields["email"].lastIndexOf('@');
+            let lastDotPos = fields["email"].lastIndexOf('.');
 
-            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["emailId"].indexOf('@') === -1 && lastDotPos > 2 && (fields["emailId"].length - lastDotPos) > 2)) {
+            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') === -1 && lastDotPos > 3 && (fields["email"].length - lastDotPos) > 3)) {
                 formIsValid = false;
                 errors["emailId"] = "Email is not valid";
             }
@@ -69,11 +73,17 @@ class Login extends Component {
         this.setState({ fields });
 
     }
-    handleLogin() {
+    handleLogin = async () => {
+        console.log("in sign in",this.state.fields);
+
         if (this.handleValidation()) {
-            this.setState({
-                snackBarOpen: true,
-                snackBarMessage: "login successfully"
+            await login(this.state.fields).then((res) => {
+                console.log("res",res);
+                
+                this.setState({
+                    snackBarOpen: true,
+                    snackBarMessage: res.data.message
+                })
             })
 
         }
@@ -103,10 +113,10 @@ class Login extends Component {
                                     label="Email Id"
                                     type="text"
                                     placeholder="email Id"
-                                    value={this.state.fields["emailId"]}
-                                    error={this.state.emailId["emailId"]}
-                                    helperText={this.state.errors["emailId"]}
-                                    onChange={this.handleChange.bind(this, "emailId")}
+                                    value={this.state.fields["email"]}
+                                    error={this.state.errors["email"]}
+                                    helperText={this.state.errors["email"]}
+                                    onChange={this.handleChange.bind(this, "email")}
                                 />
 
                                 <TextField
@@ -116,7 +126,7 @@ class Login extends Component {
                                     type="password"
                                     placeholder="password"
                                     value={this.state.fields["password"]}
-                                    error={this.state.emailId["password"]}
+                                    error={this.state.errors["password"]}
                                     helperText={this.state.errors["password"]}
                                     onChange={this.handleChange.bind(this, "password")}
                                     type={!this.state.show ? 'password' : 'text'}
@@ -141,7 +151,9 @@ class Login extends Component {
                         <div className="signUpDiv">
                             <span>Dont have an account with us? </span>
                             <button
-                                id="btnSign">
+                                id="btnSign"
+                                onClick={() => this.props.history.push('/signUp')}>
+
                                 Signup
                         </button>
                         </div>
